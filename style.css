@@ -70,3 +70,7 @@ button:hover{
    color: red 
 }
 
+img {
+  display: block;
+  margin: 0 auto 20px auto;
+}
