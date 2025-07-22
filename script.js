@@ -1,18 +1,29 @@
-console.log("hola");
+console.log("Bienvenido al formulario de inscripción");
 const submitFunction = (event) => {
+  event.preventDefault(); // Evita envío por defecto
+
   if (!validarFormulario()) {
-    event.preventDefault();
+    return;
+  }
+
+  const form = document.getElementById("formulario");
+
+  const mensaje = 
+    `¿Deseás enviar el siguiente formulario?\n\n` +
+    `Nombre: ${form.name.value}\n` +
+    `Apellido: ${form.lastname.value}\n` +
+    `Email: ${form.email.value}\n` +
+    `Edad: ${form.edad.value}\n` +
+    `Actividad: ${form.actividad.value}\n` +
+    `Nivel de Estudio: ${form.nivelEstudio.value}\n`;
+
+  const confirmar = confirm(mensaje);
+
+  if (confirmar) {
+    form.reset();
+    alert("Formulario enviado con éxito.");
   } else {
-    event.preventDefault();
-    const form = document.getElementById("formulario");
-    alert(
-      `Nombre: ${form.name.value}\n` +
-        `Apellido: ${form.lastname.value}\n` +
-        `Email: ${form.email.value}\n` +
-        `Edad: ${form.edad.value}\n` +
-        `Actividad: ${form.actividad.value}\n` +
-        `Nivel de Estudio: ${form.nivelEstudio.value}\n`
-    );
+    alert("Envío cancelado.");
   }
 };
 
